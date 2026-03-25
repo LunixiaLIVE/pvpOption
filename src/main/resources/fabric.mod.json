@@ -4,8 +4,10 @@
   "version": "${version}",
   "name": "pvpToggle",
   "description": "Opt-in PvP flagging system. Only players flagged for PvP can deal and take damage from each other.",
-  "authors": [],
-  "contact": {},
+  "authors": ["LunixiaLIVE"],
+  "contact": {
+    "sources": "https://github.com/LunixiaLIVE/pvpToggle"
+  },
   "license": "MIT",
   "environment": "server",
   "entrypoints": {
