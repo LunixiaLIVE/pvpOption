@@ -1,6 +1,5 @@
 package net.lunix.pvpoption;
 
-import net.kyori.adventure.text.serializer.legacy.LegacyComponentSerializer;
 import org.bukkit.*;
 import org.bukkit.command.*;
 import org.bukkit.entity.Player;
@@ -8,8 +7,6 @@ import org.bukkit.entity.Player;
 import java.util.*;
 
 public class PvpCommand implements CommandExecutor, TabCompleter {
-
-    private static final LegacyComponentSerializer LEGACY = LegacyComponentSerializer.legacySection();
 
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
@@ -250,7 +247,7 @@ public class PvpCommand implements CommandExecutor, TabCompleter {
     }
 
     private void send(CommandSender sender, String msg) {
-        sender.sendMessage(LEGACY.deserialize(msg));
+        sender.sendMessage(msg);
     }
 
     @Override

@@ -1,7 +1,6 @@
 package net.lunix.pvpoption;
 
 import com.google.gson.*;
-import net.kyori.adventure.text.serializer.legacy.LegacyComponentSerializer;
 import org.bukkit.*;
 import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitRunnable;
@@ -24,7 +23,6 @@ public class PvpManager {
     static final Map<UUID, Long> lastActivityTime = new ConcurrentHashMap<>();
 
     private static final Gson GSON = new GsonBuilder().setPrettyPrinting().create();
-    private static final LegacyComponentSerializer LEGACY = LegacyComponentSerializer.legacySection();
     private static PvpOptionPaper plugin;
 
     static void init(PvpOptionPaper p) {
@@ -44,7 +42,7 @@ public class PvpManager {
                     if (warmup != null && now >= warmup) {
                         warmupExpiry.remove(uuid);
                         activateFlag(player);
-                        player.sendMessage(LEGACY.deserialize("§cPvP ENABLED. You can now deal and take damage from other flagged players."));
+                        player.sendMessage("§cPvP ENABLED. You can now deal and take damage from other flagged players.");
                     }
 
                     updateActionBar(player);
@@ -56,7 +54,7 @@ public class PvpManager {
                         Long lastActivity = lastActivityTime.get(uuid);
                         if (lastActivity != null && (now - lastActivity) > autoUnflagMinutes * 60_000L) {
                             deactivateFlag(player);
-                            player.sendMessage(LEGACY.deserialize("§aPvP automatically disabled due to inactivity."));
+                            player.sendMessage("§aPvP automatically disabled due to inactivity.");
                         }
                     }
                 }
@@ -76,9 +74,9 @@ public class PvpManager {
 
         if (!attackerFlagged || !defenderFlagged) {
             if (!attackerFlagged)
-                attacker.sendMessage(LEGACY.deserialize("§eYou are not flagged for PvP. Use /pvpoption to opt in."));
+                attacker.sendMessage("§eYou are not flagged for PvP. Use /pvpoption to opt in.");
             else
-                attacker.sendMessage(LEGACY.deserialize("§eThat player is not flagged for PvP."));
+                attacker.sendMessage("§eThat player is not flagged for PvP.");
             return false;
         }
 
@@ -96,15 +94,15 @@ public class PvpManager {
     private static void updateActionBar(Player player) {
         UUID uuid = player.getUniqueId();
         if (warmupExpiry.containsKey(uuid)) {
-            player.sendActionBar(LEGACY.deserialize("§e⚔ Entering PvP in " + getRemainingWarmup(uuid) + "s..."));
+            player.sendActionBar("§e⚔ Entering PvP in " + getRemainingWarmup(uuid) + "s...");
             return;
         }
         if (pvpEnabled && PvpPlayerData.isPvpFlagged(uuid)) {
             long cooldown = getRemainingCooldown(uuid);
             if (cooldown > 0)
-                player.sendActionBar(LEGACY.deserialize("§c⚔ PvP Active §7| §eCombat: " + cooldown + "s"));
+                player.sendActionBar("§c⚔ PvP Active §7| §eCombat: " + cooldown + "s");
             else
-                player.sendActionBar(LEGACY.deserialize("§c⚔ PvP Active"));
+                player.sendActionBar("§c⚔ PvP Active");
         }
     }
 
@@ -112,7 +110,7 @@ public class PvpManager {
         PvpPlayerData.setPvpFlagged(player.getUniqueId(), true);
         lastActivityTime.put(player.getUniqueId(), System.currentTimeMillis());
         if (broadcastToggle) {
-            var msg = LEGACY.deserialize("§7[PvP] §c" + player.getName() + "§7 has entered PvP mode.");
+            String msg = "§7[PvP] §c" + player.getName() + "§7 has entered PvP mode.";
             Bukkit.getOnlinePlayers().stream()
                 .filter(p -> !p.getUniqueId().equals(player.getUniqueId()))
                 .forEach(p -> p.sendMessage(msg));
@@ -125,7 +123,7 @@ public class PvpManager {
         cooldownExpiry.remove(uuid);
         lastActivityTime.remove(uuid);
         if (broadcastToggle) {
-            var msg = LEGACY.deserialize("§7[PvP] §a" + player.getName() + "§7 has left PvP mode.");
+            String msg = "§7[PvP] §a" + player.getName() + "§7 has left PvP mode.";
             Bukkit.getOnlinePlayers().stream()
                 .filter(p -> !p.getUniqueId().equals(player.getUniqueId()))
                 .forEach(p -> p.sendMessage(msg));
