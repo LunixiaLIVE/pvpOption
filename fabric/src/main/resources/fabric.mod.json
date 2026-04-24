@@ -6,7 +6,7 @@
   "description": "Opt-in PvP flagging system. Only players flagged for PvP can deal and take damage from each other.",
   "authors": ["LunixiaLIVE"],
   "contact": {
-    "sources": "https://github.com/LunixiaLIVE/pvpOption_multi"
+    "sources": "https://github.com/LunixiaLIVE/pvpOption"
   },
   "license": "MIT",
   "environment": "*",
@@ -21,7 +21,7 @@
   "depends": {
     "fabricloader": ">=${loader_version}",
     "fabric-api": "*",
-    "minecraft": "${minecraft_version}",
+    "minecraft": ">=1.21",
     "architectury": "*"
   }
 }
