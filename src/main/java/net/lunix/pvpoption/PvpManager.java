@@ -160,7 +160,9 @@ public class PvpManager {
                 if (obj.has("broadcastToggle"))   broadcastToggle   = obj.get("broadcastToggle").getAsBoolean();
                 if (obj.has("autoUnflagMinutes")) autoUnflagMinutes = obj.get("autoUnflagMinutes").getAsInt();
             }
-        } catch (Exception ignored) {}
+        } catch (Exception e) {
+            plugin.getLogger().warning("[pvpOption] Failed to load config: " + e.getMessage());
+        }
     }
 
     static void saveConfig() {
@@ -176,7 +178,9 @@ public class PvpManager {
                 obj.addProperty("autoUnflagMinutes", autoUnflagMinutes);
                 GSON.toJson(obj, w);
             }
-        } catch (Exception ignored) {}
+        } catch (Exception e) {
+            plugin.getLogger().warning("[pvpOption] Failed to save config: " + e.getMessage());
+        }
     }
 
     private static Path configPath() {
