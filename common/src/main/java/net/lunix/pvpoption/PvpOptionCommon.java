@@ -58,7 +58,7 @@ public class PvpOptionCommon {
         LifecycleEvent.SERVER_STARTED.register(server -> {
             loadConfig();
             PlayerDataStore.load();
-            applyServerPvp(server, true);
+            applyServerPvp(server, pvpEnabled);
         });
 
         // Tick: warmup completion, action bar HUD, auto-unflag
@@ -667,7 +667,9 @@ public class PvpOptionCommon {
                 if (obj.has("broadcastToggle"))    broadcastToggle    = obj.get("broadcastToggle").getAsBoolean();
                 if (obj.has("autoUnflagMinutes"))  autoUnflagMinutes  = obj.get("autoUnflagMinutes").getAsInt();
             }
-        } catch (Exception ignored) {}
+        } catch (Exception e) {
+            LOGGER.warn("[pvpOption] Failed to load config: {}", e.getMessage());
+        }
     }
 
     public static void saveConfig() {
@@ -680,6 +682,8 @@ public class PvpOptionCommon {
             obj.addProperty("broadcastToggle",    broadcastToggle);
             obj.addProperty("autoUnflagMinutes",  autoUnflagMinutes);
             GSON.toJson(obj, writer);
-        } catch (Exception ignored) {}
+        } catch (Exception e) {
+            LOGGER.warn("[pvpOption] Failed to save config: {}", e.getMessage());
+        }
     }
 }
