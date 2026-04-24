@@ -9,7 +9,7 @@ A Minecraft mod/plugin that adds opt-in PvP flagging. Players must explicitly en
 | Branch | Platform | MC Version |
 |---|---|---|
 | `multi_1.21.11` | Fabric + NeoForge (Architectury) | 1.21.11 |
-| `plugin_1.21.11` | Paper, Purpur, Pufferfish | 1.21.11 |
+| `plugin_1.21.11` | Spigot, Paper, Purpur, Pufferfish | 1.21.11 |
 
 ---
 
