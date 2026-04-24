@@ -1,0 +1,33 @@
+modLoader = "javafml"
+loaderVersion = "[4,)"
+license = "MIT"
+
+[[mixins]]
+    config = "pvpoption.common.mixins.json"
+
+[[mods]]
+    modId = "pvpoption"
+    version = "${version}"
+    displayName = "pvpOption"
+    description = "Opt-in PvP flagging system. Only players flagged for PvP can deal and take damage from each other."
+
+[[dependencies.pvpoption]]
+    modId = "neoforge"
+    type = "required"
+    versionRange = "[21.11,)"
+    ordering = "NONE"
+    side = "BOTH"
+
+[[dependencies.pvpoption]]
+    modId = "minecraft"
+    type = "required"
+    versionRange = "[1.21.1,)"
+    ordering = "NONE"
+    side = "BOTH"
+
+[[dependencies.pvpoption]]
+    modId = "architectury"
+    type = "required"
+    versionRange = "*"
+    ordering = "NONE"
+    side = "BOTH"
