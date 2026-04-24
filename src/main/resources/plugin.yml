@@ -1,0 +1,14 @@
+name: PvpOption
+version: '${version}'
+main: net.lunix.pvpoption.PvpOptionPaper
+api-version: '1.21'
+description: Per-player opt-in PvP flagging system
+commands:
+  pvpoption:
+    description: PvP flagging system
+    aliases: [pvp]
+    usage: /pvpoption [on|off|status|list|admin ...]
+permissions:
+  pvpoption.admin:
+    description: Access to PvpOption admin commands
+    default: op
