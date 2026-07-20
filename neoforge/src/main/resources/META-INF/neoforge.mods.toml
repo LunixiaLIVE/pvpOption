@@ -10,6 +10,7 @@ license = "MIT"
     version = "${version}"
     displayName = "pvpOption"
     description = "Opt-in PvP flagging system. Only players flagged for PvP can deal and take damage from each other."
+    displayURL = "https://github.com/LunixiaLIVE/Lunixia-Minecraft-QOL-Mods"
 
 [[dependencies.pvpoption]]
     modId = "neoforge"

@@ -6,6 +6,7 @@
   "description": "Opt-in PvP flagging system. Only players flagged for PvP can deal and take damage from each other.",
   "authors": ["LunixiaLIVE"],
   "contact": {
+    "homepage": "https://github.com/LunixiaLIVE/Lunixia-Minecraft-QOL-Mods",
     "sources": "https://github.com/LunixiaLIVE/pvpOption"
   },
   "license": "MIT",
