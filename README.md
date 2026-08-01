@@ -171,7 +171,7 @@ a restart. Per-player flags and locks are stored separately in **`config/pvpopti
 | [`plugin_1.21.11`](https://github.com/LunixiaLIVE/pvpOption/tree/plugin_1.21.11) | 1.21.11 | Paper | Paper (no extra deps) | — |
 
 > [!TIP]
-> Every `multi_*` branch builds **one jar that runs on both Fabric and NeoForge**. On 26.x that's a shared universal jar (Minecraft is unobfuscated there); on 1.21.x it's a jar-in-jar bundle (`-multi.jar`) with the Fabric and NeoForge builds nested inside, each loader picking its own. Per-loader `-fabric` / `-neoforge` jars are produced too (`build/staging/`). Fully self-contained — **no extra library mods to install**.
+> Every `multi_*` branch builds **one `-multi.jar` that runs on both Fabric and NeoForge**. On 26.x it's a single merged jar (Minecraft is unobfuscated there); on 1.21.x it's a jar-in-jar bundle with the Fabric and NeoForge builds nested inside, each loader picking its own. Per-loader `-fabric` / `-neoforge` jars are produced too (`build/staging/`). Fully self-contained — **no extra library mods to install**.
 
 <details>
 <summary>🛠️ <b>Building from source</b></summary>
@@ -184,7 +184,7 @@ cd pvpOption
 ./gradlew build
 ```
 
-The universal jar lands in `build/libs/` — drop it into your `mods/` folder on either loader.
+The `-multi` jar lands in `build/libs/` — drop it into your `mods/` folder on either loader.
 </details>
 
 ## 📄 License
